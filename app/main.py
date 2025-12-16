@@ -1,7 +1,10 @@
+print("### main.py loaded ###")
+
 from fastapi import FastAPI, HTTPException
 from datetime import datetime, timezone
-from .dynamodb import get_table
-from .models import UserCreate
+
+from app.dynamodb import get_table
+from app.models import UserCreate
 
 
 app = FastAPI()
@@ -14,7 +17,7 @@ def health():
 
 @app.post("/users")
 def create_user(user: UserCreate):
-    table = get_table()  # ← ここで初めて DynamoDB に接続
+    table = get_table()
     item = {**user.model_dump(), "created_at": datetime.now(timezone.utc).isoformat()}
     table.put_item(Item=item)
     return item
