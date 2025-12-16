@@ -11,6 +11,6 @@ def health():
     return {"status": "ok"}
 
 
-# 🔴 uvicornは一切使わない
+# プロセスを生かす
 while True:
     time.sleep(10)
