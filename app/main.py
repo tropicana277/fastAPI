@@ -7,6 +7,11 @@ from .models import UserCreate
 app = FastAPI()
 
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 @app.post("/users")
 def create_user(user: UserCreate):
     table = get_table()  # ← ここで初めて DynamoDB に接続
