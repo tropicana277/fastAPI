@@ -1,5 +1,7 @@
+import time
 from fastapi import FastAPI
-import uvicorn
+
+print("### main.py started ###")
 
 app = FastAPI()
 
@@ -9,11 +11,6 @@ def health():
     return {"status": "ok"}
 
 
-if __name__ == "__main__":
-    print("### STARTING FASTAPI ###")
-    uvicorn.run(
-        app,
-        host="0.0.0.0",
-        port=8080,
-        log_level="debug",
-    )
+# 🔴 uvicornは一切使わない
+while True:
+    time.sleep(10)
