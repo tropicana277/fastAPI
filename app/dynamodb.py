@@ -1,5 +1,13 @@
-import boto3
 import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s %(message)s",
+)
+
+print("### main.py imported ###", flush=True)
+
+import boto3
 from botocore.exceptions import ClientError
 
 logger = logging.getLogger(__name__)
